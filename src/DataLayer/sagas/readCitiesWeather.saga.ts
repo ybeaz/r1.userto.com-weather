@@ -8,6 +8,7 @@ import { MethodHttpEnumType } from '../../@types/'
 import { ActionReduxType, RootStoreType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { axiosClient } from '../../CommunicationLayer/clients/axiosClient'
+import { getParsedCitiesString } from '../../Shared/getParsedCitiesString'
 
 function* readCitiesWeather(): Iterable<any> {
   const store: any = yield select((store: RootStoreType) => store)
@@ -19,22 +20,13 @@ function* readCitiesWeather(): Iterable<any> {
   const baseURL = SERVERS_MAIN[envType as keyof ServersType] as string
   const headers = getHeaders({})
 
-  console.info('readCitiesWeather.saga [9]', { inputCities })
   try {
     // yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    // const citiesWeather: any = yield []
+    const cities = getParsedCitiesString(inputCities)
+    if (!cities.length) return
 
-    const payload = {
-      cities: [
-        'san-francisco',
-        'las-vegas',
-        'newton',
-        'boston',
-        'new-york-city',
-        'san-bruno',
-      ],
-    }
+    const payload = { cities }
 
     const res: any = yield axiosClient(
       baseURL,
@@ -44,14 +36,9 @@ function* readCitiesWeather(): Iterable<any> {
       data: payload,
       method: MethodHttpEnumType['post'],
     })
-    const output = res?.data?.data
+    const citiesWeather = res?.data?.data
 
-    console.info('readCitiesWeather.saga [44]', {
-      output,
-      payload,
-      inputCities,
-    })
-    // yield put(actionSync.SET_CITIES_WEATHER(citiesWeather))
+    yield put(actionSync.SET_CITIES_WEATHER(citiesWeather))
 
     // yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

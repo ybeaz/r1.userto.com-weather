@@ -1,5 +1,8 @@
+import { CityWeatherType } from '../../../Interfaces'
+
 export type CitiesWeatherListPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  citiesWeather: CityWeatherType[]
 }
 
 export type CitiesWeatherListPropsOutType = Record<string, any>

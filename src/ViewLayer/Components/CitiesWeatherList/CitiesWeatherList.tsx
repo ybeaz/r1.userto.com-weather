@@ -1,5 +1,7 @@
 import React from 'react'
+import { nanoid } from 'nanoid'
 
+import { CityWeatherType } from '../../../Interfaces'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
@@ -9,6 +11,21 @@ import {
   CitiesWeatherListType,
 } from './CitiesWeatherListTypes'
 
+/*
+
+[
+    {
+        "name": "Boston",
+        "display_name": "Boston, Suffolk County, Massachusetts, United States",
+        "temperature": 62,
+        "temperatureUnit": "F",
+        "temperatureTrend": null,
+        "windSpeed": "17 to 21 mph",
+        "windDirection": "S"
+    },
+]
+*/
+
 /**
  * @description Component to render CitiesWeatherList
  * @import import { CitiesWeatherList, CitiesWeatherListPropsType, CitiesWeatherListPropsOutType, CitiesWeatherListType } 
@@ -17,14 +34,52 @@ import {
 const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
   props: CitiesWeatherListPropsType
 ) => {
-  const { classAdded } = props
+  const { classAdded, citiesWeather } = props
+
+  console.info('CitiesWeatherList [22]', { citiesWeather })
+
+  const getCitiesWeatherList = (
+    citiesWeatherListIn: CityWeatherType[]
+  ): React.ReactElement[] => {
+    return citiesWeatherListIn.map((cityWeather: CityWeatherType) => {
+      const key = nanoid()
+
+      const {
+        name,
+        display_name,
+        temperature,
+        temperatureUnit,
+        temperatureTrend,
+        windSpeed,
+        windDirection,
+      } = cityWeather
+      return (
+        <div key={key} className='_row _row_weather'>
+          <div className='_col _display_name'>{display_name}</div>
+          <div className='_col _temperature'>{temperature}</div>
+          <div className='_col _temperatureUnit'>{temperatureUnit}</div>
+          <div className='_col _temperatureTrend'>{temperatureTrend}</div>
+          <div className='_col _windSpeed'>{windSpeed}</div>
+          <div className='_col _windDirection'>{windDirection}</div>
+        </div>
+      )
+    })
+  }
 
   const propsOut: CitiesWeatherListPropsOutType = {}
 
   return (
-    <div className={getClasses('CitiesWeatherList', classAdded)}>
-      CitiesWeatherList
-    </div>
+    <section className={getClasses('CitiesWeatherList', classAdded)}>
+      <header className='_header'>
+        <div className='_col _header_display_name'>City Name</div>
+        <div className='_col _header_temperature'>Temperature</div>
+        <div className='_col _header_temperatureUnit'>Unit</div>
+        <div className='_col _header_temperatureTrend'>Trend</div>
+        <div className='_col _header_windSpeed'>Wind Speed</div>
+        <div className='_col _header_windDirection'>Wind Direction</div>
+      </header>
+      {getCitiesWeatherList(citiesWeather)}
+    </section>
   )
 }
 

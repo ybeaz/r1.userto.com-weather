@@ -1,5 +1,38 @@
 .CitiesWeatherList {
-  display: flex;
+  display: table;
+  flex-direction: column;
+  width: 100%;
+
+  ._col {
+    display: table-cell;
+    padding: 0 1rem 0 0;
+  }
+
+  ._header {
+    display: table-row;
+  }
+
+  ._row_weather {
+    display: table-row;
+
+    ._display_name {
+    }
+
+    ._temperature {
+    }
+
+    ._temperatureUnit {
+    }
+
+    ._temperatureTrend {
+    }
+
+    ._windSpeed {
+    }
+
+    ._windDirection {
+    }
+  }
 
   @media @large {
   }

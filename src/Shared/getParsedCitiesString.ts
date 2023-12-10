@@ -9,7 +9,7 @@ export type GetParsedCitiesStringParamsType = string
 
 export type GetParsedCitiesStringOptionsType = { printRes?: boolean }
 
-export type GetParsedCitiesStringResType = Promise<any>
+export type GetParsedCitiesStringResType = string[]
 
 interface GetParsedCitiesStringType {
   (
@@ -22,11 +22,11 @@ const optionsDefault: GetParsedCitiesStringOptionsType = { printRes: false }
 
 /**
  * @description Function to getParsedCitiesString
- * @run ts-node src/shared/utils/getParsedCitiesString.ts
+ * @run ts-node src/Shared/getParsedCitiesString.ts
  * @import import { getParsedCitiesString, GetParsedCitiesStringParamsType } from '../Shared/getParsedCitiesString'
  */
-export const getParsedCitiesString: GetParsedCitiesStringType = async (
-  params: GetParsedCitiesStringParamsType,
+export const getParsedCitiesString: GetParsedCitiesStringType = (
+  inputCities: GetParsedCitiesStringParamsType,
   optionsIn: GetParsedCitiesStringOptionsType = optionsDefault
 ) => {
   const options: GetParsedCitiesStringOptionsType = {
@@ -34,18 +34,21 @@ export const getParsedCitiesString: GetParsedCitiesStringType = async (
     ...optionsIn,
   }
 
-  let output: any[] = []
+  let output: string[] = []
 
   try {
-    output = await []
+    output = inputCities
+      .toLowerCase()
+      .split(', ')
+      .map((inputCity: string) => {
+        return inputCity.split(' ').join('-')
+      })
 
     if (options?.printRes) {
-      console.log('getParsedCitiesString [43]', { output })
-      consoler('getParsedCitiesString [44]', 'output', output)
+      console.log('getParsedCitiesString [43]', { inputCities, output })
     }
   } catch (error: any) {
     console.log('getParsedCitiesString', 'Error', error.message)
-    consolerError('getParsedCitiesString', error)
   } finally {
     return output
   }
@@ -56,9 +59,8 @@ export const getParsedCitiesString: GetParsedCitiesStringType = async (
  */
 if (require.main === module) {
   ;(async () => {
-    const input = ''
-    const output = await getParsedCitiesString(input, { printRes: true })
-    console.log('getParsedCitiesString [60]', { input, output })
-    consoler('getParsedCitiesString [61]', 'output', output)
+    const input = 'San Francisco, Boston, San Mateo'
+    const output = getParsedCitiesString(input, { printRes: true })
+    // consoler('getParsedCitiesString [61]', 'output', output)
   })()
 }

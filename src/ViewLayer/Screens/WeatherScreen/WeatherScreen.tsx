@@ -28,7 +28,8 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
     store = rootStoreDefault,
   } = props
   const inputCities = store?.forms?.inputCities
-  // console.info('WeatherScreen [25]', { inputCities, props })
+  const citiesWeather = store?.citiesWeather
+  // console.info('WeatherScreen [25]', { citiesWeather })
 
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {
@@ -43,14 +44,19 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
       capture: 'Submit',
       handleOnClick: () => handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' }),
     },
+    citiesWeatherListProps: {
+      citiesWeather,
+    },
   }
 
   return (
     <div className={getClasses('WeatherScreen', classAdded)}>
       <div className='_inputGroupWrapper'>
         <Input {...propsOut.inputProps} />
-
         <Button {...propsOut.buttonProps} />
+      </div>
+      <div className='_citiesWeatherListWrapper'>
+        <CitiesWeatherList {...propsOut.citiesWeatherListProps} />
       </div>
     </div>
   )
