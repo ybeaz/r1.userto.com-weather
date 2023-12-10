@@ -55,12 +55,12 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
       } = cityWeather
       return (
         <div key={key} className='_row _row_weather'>
-          <div className='_col _display_name'>{display_name}</div>
-          <div className='_col _temperature'>{temperature}</div>
-          <div className='_col _temperatureUnit'>{temperatureUnit}</div>
-          <div className='_col _temperatureTrend'>{temperatureTrend}</div>
-          <div className='_col _windSpeed'>{windSpeed}</div>
-          <div className='_col _windDirection'>{windDirection}</div>
+          <div className='_cell _display_name'>{display_name}</div>
+          <div className='_cell _temperature'>{temperature}</div>
+          <div className='_cell _temperatureUnit'>{temperatureUnit}</div>
+          <div className='_cell _temperatureTrend'>{temperatureTrend}</div>
+          <div className='_cell _windSpeed'>{windSpeed}</div>
+          <div className='_cell _windDirection'>{windDirection}</div>
         </div>
       )
     })
@@ -70,13 +70,13 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
 
   return (
     <section className={getClasses('CitiesWeatherList', classAdded)}>
-      <header className='_header'>
-        <div className='_col _header_display_name'>City Name</div>
-        <div className='_col _header_temperature'>Temperature</div>
-        <div className='_col _header_temperatureUnit'>Unit</div>
-        <div className='_col _header_temperatureTrend'>Trend</div>
-        <div className='_col _header_windSpeed'>Wind Speed</div>
-        <div className='_col _header_windDirection'>Wind Direction</div>
+      <header className='_row _header'>
+        <div className='_cell _header_display_name'>City Name</div>
+        <div className='_cell _header_temperature'>Temperature</div>
+        <div className='_cell _header_temperatureUnit'>Unit</div>
+        <div className='_cell _header_temperatureTrend'>Trend</div>
+        <div className='_cell _header_windSpeed'>Wind Speed</div>
+        <div className='_cell _header_windDirection'>Wind Direction</div>
       </header>
       {getCitiesWeatherList(citiesWeather)}
     </section>
