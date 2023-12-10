@@ -20,7 +20,7 @@ const InputComponent: InputComponentType = (props: InputPropsType) => {
   const propsOut: InputPropsOutType = {
     inputProps: {
       className: '_input',
-      onInput: (event: any) => handleOnInput(event.target.value),
+      onInput: (event: any) => handleOnInput(event),
       value,
       placeholder,
     },

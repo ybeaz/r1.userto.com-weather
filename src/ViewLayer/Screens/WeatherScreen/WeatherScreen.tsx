@@ -2,7 +2,10 @@ import React from 'react'
 
 import { getClasses } from '../../../Shared/getClasses'
 
+import { rootStoreDefault } from '../../../DataLayer/rootStoreDefault'
 import { Input, Button, CitiesWeatherList } from '../../Components/'
+import { withPropsYrl, withStoreStateYrl } from '../../Decorators/'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import {
   WeatherScreenPropsType,
@@ -19,23 +22,26 @@ import {
 const WeatherScreenComponent: WeatherScreenComponentType = (
   props: WeatherScreenPropsType
 ) => {
-  const { classAdded } = props
+  const {
+    classAdded,
+    handleEvents = () => {},
+    store = rootStoreDefault,
+  } = props
+  const inputCities = store?.forms?.inputCities
+  console.info('WeatherScreen [25]', { inputCities, props })
 
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {
       classAdded: [],
-      handleOnInput: (valueIn: string) => {
-        console.info('WeatherScreen [27]', { valueIn })
-      },
-      value: 'abc',
+      handleOnInput: (event: string) =>
+        handleEvents(event, { typeEvent: 'ONCHANGE_INPUT_CITIES' }),
+      value: inputCities,
       placeholder: 'ex.: New York City, San Francisco',
     },
     buttonProps: {
       classAdded: [],
       capture: 'Submit',
-      handleOnClick: () => {
-        console.info('WeatherScreen [35]', {})
-      },
+      handleOnClick: () => handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' }),
     },
   }
 
@@ -50,7 +56,11 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   )
 }
 
-export const WeatherScreen = React.memo(WeatherScreenComponent)
+export const WeatherScreen = withStoreStateYrl(
+  withPropsYrl({ handleEvents: handleEventsIn })(
+    React.memo(WeatherScreenComponent)
+  )
+)
 
 export type {
   WeatherScreenPropsType,

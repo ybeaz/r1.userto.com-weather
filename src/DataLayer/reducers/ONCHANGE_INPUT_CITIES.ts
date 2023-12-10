@@ -1,14 +1,16 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const ONCHANGE_EMAIL_CC: ReducerType = (
+export const ONCHANGE_INPUT_CITIES: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
   const { forms } = store
   const nextForms = {
     ...forms,
-    sendCc: data,
+    inputCities: data,
   }
+
+  console.info('ONCHANGE_INPUT_CITIES [14]', { data })
   return { ...store, forms: nextForms }
 }
