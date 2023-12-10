@@ -28,7 +28,7 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
     store = rootStoreDefault,
   } = props
   const inputCities = store?.forms?.inputCities
-  console.info('WeatherScreen [25]', { inputCities, props })
+  // console.info('WeatherScreen [25]', { inputCities, props })
 
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {

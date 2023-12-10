@@ -11,6 +11,5 @@ export const ONCHANGE_INPUT_CITIES: ReducerType = (
     inputCities: data,
   }
 
-  console.info('ONCHANGE_INPUT_CITIES [14]', { data })
   return { ...store, forms: nextForms }
 }
