@@ -1,0 +1,33 @@
+.Button {
+  display: flex;
+
+  ._button {
+    display: flex;
+    background-color: inherit;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-radius: 5px;
+    padding: 0.75rem;
+    &:active,
+    &:focus {
+      outline: none;
+      text-size-adjust: 100%;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}

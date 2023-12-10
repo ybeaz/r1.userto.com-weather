@@ -1,13 +1,9 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SET_COURSES: ReducerType = (
+export const SET_CITIES_WEATHER: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
-  const { isLoaded } = store
-  const isLoadedNext = { ...isLoaded, isLoadedCourses: true }
-  let storeNext = { ...store, courses: data, isLoaded: isLoadedNext }
-
-  return storeNext
+  return { ...store, citiesWeather: data }
 }

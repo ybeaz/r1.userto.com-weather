@@ -1,5 +1,31 @@
 .WeatherScreen {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0 2rem 0;
+  flex-direction: column;
+
+  ._inputGroupWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-bottom: 3rem;
+
+    ._inputAndButton {
+      display: flex;
+      flex-direction: row;
+      width: -webkit-fill-available;
+    }
+    ._instruction {
+      font-size: small;
+      width: -webkit-fill-available;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  ._citiesWeatherListWrapper {
+    display: flex;
+  }
 
   @media @large {
   }
