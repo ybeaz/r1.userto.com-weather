@@ -1,6 +1,6 @@
 import { RootStoreType } from '../Interfaces/RootStoreType'
 
-const citiesWeather: any = [
+const citiesWeatherMock: any = [
   {
     name: 'Boston',
     display_name: 'Boston, Suffolk County, Massachusetts, United States',
@@ -50,7 +50,7 @@ const citiesWeather: any = [
 ]
 
 export const rootStoreDefault: RootStoreType = {
-  citiesWeather: citiesWeather,
+  citiesWeather: [],
   forms: {
     inputCities: '',
   },

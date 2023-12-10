@@ -36,9 +36,13 @@ function* readCitiesWeather(): Iterable<any> {
       data: payload,
       method: MethodHttpEnumType['post'],
     })
-    const citiesWeather = res?.data?.data
+    const citiesWeather = res?.data?.data || []
 
-    yield put(actionSync.SET_CITIES_WEATHER(citiesWeather))
+    const citiesWeatherNext = citiesWeather.filter(
+      (item: any) => item.display_name
+    )
+
+    yield put(actionSync.SET_CITIES_WEATHER(citiesWeatherNext))
 
     // yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

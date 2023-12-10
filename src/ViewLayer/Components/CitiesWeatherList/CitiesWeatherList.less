@@ -5,49 +5,58 @@
 
   display: grid; /* grid containers */
   // grid-gap: 10px;
-  grid-template-columns: 5fr 1fr 1fr 1fr 2fr 2fr; /* four columns */
-  // grid-template-rows: repeat(4, 1fr); /* four rows */
+  grid-template-columns: 5fr 1fr 1fr 1fr 2fr 2fr; /* six columns */
   grid-auto-flow: row; /* in column direction */
 
   ._header {
-    // display: table-row;
     display: contents; /* the child elements would be grid items */
   }
 
   ._row {
-    // display: table-row;
     display: contents; /* the child elements would be grid items */
   }
 
   ._row_header {
     ._cell {
-      border: 1px solid;
-      border-left: 1px solid;
-      border-color: lightgrey;
-      padding: 5px;
+      padding: 1rem 0.5rem;
+      align-items: center;
+      justify-content: center;
     }
 
     ._header_display_name {
+      border: 1px solid;
+      border-top: 1px solid;
+      border-right: 1px solid;
+      border-color: lightgrey;
       border-bottom: 1px solid;
       border-color: lightgrey;
     }
     ._header_temperature {
+      border-top: 1px solid;
+      border-right: 1px solid;
       border-bottom: 1px solid;
       border-color: lightgrey;
     }
     ._header_temperatureUnit {
+      border-top: 1px solid;
+      border-right: 1px solid;
       border-bottom: 1px solid;
       border-color: lightgrey;
     }
     ._header_temperatureTrend {
+      border-top: 1px solid;
+      border-right: 1px solid;
       border-bottom: 1px solid;
       border-color: lightgrey;
     }
     ._header_windSpeed {
+      border-top: 1px solid;
+      border-right: 1px solid;
       border-bottom: 1px solid;
       border-color: lightgrey;
     }
     ._header_windDirection {
+      border-top: 1px solid;
       border-right: 1px solid;
       border-bottom: 1px solid;
       border-color: lightgrey;
@@ -59,7 +68,7 @@
       border-right: 1px solid;
       border-bottom: 1px solid;
       border-color: lightgrey;
-      padding: 5px;
+      padding: 0.5rem;
     }
 
     ._display_name {

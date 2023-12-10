@@ -34,15 +34,20 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {
       classAdded: [],
-      handleOnInput: (event: string) =>
-        handleEvents(event, { typeEvent: 'ONCHANGE_INPUT_CITIES' }),
+      handleOnInput: (event: any) =>
+        handleEvents(
+          {},
+          { typeEvent: 'ONCHANGE_INPUT_CITIES', data: event.target.value }
+        ),
       value: inputCities,
       placeholder: 'ex.: New York City, San Francisco',
     },
     buttonProps: {
       classAdded: [],
       capture: 'Submit',
-      handleOnClick: () => handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' }),
+      handleOnClick: () => {
+        handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' })
+      },
     },
     citiesWeatherListProps: {
       citiesWeather,
@@ -52,8 +57,14 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   return (
     <div className={getClasses('WeatherScreen', classAdded)}>
       <div className='_inputGroupWrapper'>
-        <Input {...propsOut.inputProps} />
-        <Button {...propsOut.buttonProps} />
+        <div className='_inputAndButton'>
+          <Input {...propsOut.inputProps} />
+          <Button {...propsOut.buttonProps} />
+        </div>
+        <div className='_instruction'>
+          enter US cities separated by commas and spaces and get the current
+          weather
+        </div>
       </div>
       <div className='_citiesWeatherListWrapper'>
         <CitiesWeatherList {...propsOut.citiesWeatherListProps} />

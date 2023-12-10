@@ -11,21 +11,6 @@ import {
   CitiesWeatherListType,
 } from './CitiesWeatherListTypes'
 
-/*
-
-[
-    {
-        "name": "Boston",
-        "display_name": "Boston, Suffolk County, Massachusetts, United States",
-        "temperature": 62,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "17 to 21 mph",
-        "windDirection": "S"
-    },
-]
-*/
-
 /**
  * @description Component to render CitiesWeatherList
  * @import import { CitiesWeatherList, CitiesWeatherListPropsType, CitiesWeatherListPropsOutType, CitiesWeatherListType } 
@@ -35,8 +20,6 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
   props: CitiesWeatherListPropsType
 ) => {
   const { classAdded, citiesWeather } = props
-
-  console.info('CitiesWeatherList [22]', { citiesWeather })
 
   const getCitiesWeatherList = (
     citiesWeatherListIn: CityWeatherType[]
@@ -70,14 +53,16 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
 
   return (
     <section className={getClasses('CitiesWeatherList', classAdded)}>
-      <header className='_row _row_header'>
-        <div className='_cell _header_display_name'>City Name</div>
-        <div className='_cell _header_temperature'>Temperature</div>
-        <div className='_cell _header_temperatureUnit'>Unit</div>
-        <div className='_cell _header_temperatureTrend'>Trend</div>
-        <div className='_cell _header_windSpeed'>Wind Speed</div>
-        <div className='_cell _header_windDirection'>Wind Direction</div>
-      </header>
+      {citiesWeather.length ? (
+        <header className='_row _row_header'>
+          <div className='_cell _header_display_name'>City Name</div>
+          <div className='_cell _header_temperature'>Temperature</div>
+          <div className='_cell _header_temperatureUnit'>Unit</div>
+          <div className='_cell _header_temperatureTrend'>Trend</div>
+          <div className='_cell _header_windSpeed'>Wind Speed</div>
+          <div className='_cell _header_windDirection'>Wind Direction</div>
+        </header>
+      ) : null}
       {getCitiesWeatherList(citiesWeather)}
     </section>
   )
