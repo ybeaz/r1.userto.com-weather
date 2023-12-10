@@ -2,6 +2,11 @@ import React from 'react'
 
 import { getClasses } from '../../../Shared/getClasses'
 
+import { rootStoreDefault } from '../../../DataLayer/rootStoreDefault'
+import { Input, Button, CitiesWeatherList } from '../../Components/'
+import { withPropsYrl, withStoreStateYrl } from '../../Decorators/'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+
 import {
   WeatherScreenPropsType,
   WeatherScreenPropsOutType,
@@ -17,16 +22,62 @@ import {
 const WeatherScreenComponent: WeatherScreenComponentType = (
   props: WeatherScreenPropsType
 ) => {
-  const { classAdded } = props
+  const {
+    classAdded,
+    handleEvents = () => {},
+    store = rootStoreDefault,
+  } = props
+  const inputCities = store?.forms?.inputCities
+  const citiesWeather = store?.citiesWeather
+  // console.info('WeatherScreen [25]', { citiesWeather })
 
-  const propsOut: WeatherScreenPropsOutType = {}
+  const propsOut: WeatherScreenPropsOutType = {
+    inputProps: {
+      classAdded: [],
+      handleOnInput: (event: any) =>
+        handleEvents(
+          {},
+          { typeEvent: 'ONCHANGE_INPUT_CITIES', data: event.target.value }
+        ),
+      value: inputCities,
+      placeholder: 'ex.: New York City, San Francisco',
+    },
+    buttonProps: {
+      classAdded: [],
+      capture: 'Submit',
+      handleOnClick: () => {
+        handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' })
+      },
+    },
+    citiesWeatherListProps: {
+      citiesWeather,
+    },
+  }
 
   return (
-    <div className={getClasses('WeatherScreen', classAdded)}>WeatherScreen</div>
+    <div className={getClasses('WeatherScreen', classAdded)}>
+      <div className='_inputGroupWrapper'>
+        <div className='_inputAndButton'>
+          <Input {...propsOut.inputProps} />
+          <Button {...propsOut.buttonProps} />
+        </div>
+        <div className='_instruction'>
+          enter US cities separated by commas and spaces and get the current
+          weather
+        </div>
+      </div>
+      <div className='_citiesWeatherListWrapper'>
+        <CitiesWeatherList {...propsOut.citiesWeatherListProps} />
+      </div>
+    </div>
   )
 }
 
-export const WeatherScreen = React.memo(WeatherScreenComponent)
+export const WeatherScreen = withStoreStateYrl(
+  withPropsYrl({ handleEvents: handleEventsIn })(
+    React.memo(WeatherScreenComponent)
+  )
+)
 
 export type {
   WeatherScreenPropsType,
