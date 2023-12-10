@@ -70,7 +70,7 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
 
   return (
     <section className={getClasses('CitiesWeatherList', classAdded)}>
-      <header className='_row _header'>
+      <header className='_row _row_header'>
         <div className='_cell _header_display_name'>City Name</div>
         <div className='_cell _header_temperature'>Temperature</div>
         <div className='_cell _header_temperatureUnit'>Unit</div>
