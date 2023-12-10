@@ -1,12 +1,7 @@
 import React, { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import {
-  GLOBAL_THEME,
-  LIGHTNESS,
-  ALPHAS,
-} from '../../Constants/globalTheme.const'
-import { getCreatedGlobalStyle } from './getCreatedGlobalStyle'
+import { GLOBAL_THEME } from '../../Constants/globalTheme.const'
 
 /**
  * @description Component to provide Global theme
@@ -32,12 +27,5 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemePropsType> = (
 
   getThemeRemotely()
 
-  const GlobalStyle = getCreatedGlobalStyle(LIGHTNESS, ALPHAS)
-
-  return (
-    <ThemeProvider theme={GLOBAL_THEME}>
-      <GlobalStyle />
-      {props.children}
-    </ThemeProvider>
-  )
+  return <ThemeProvider theme={GLOBAL_THEME}>{props.children}</ThemeProvider>
 }

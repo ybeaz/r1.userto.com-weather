@@ -35,30 +35,4 @@ each(@cssParams, .(@valueP, @keyP, @indexP) {
       })
     })
   })
-})
-
-// .forEachX(@indexX) when (@indexX > 0) {
-//   @axisX: extract(@steps, @indexX);
-
-//   .forEachY(@indexY) when (@indexY > 0) {
-//     @axisY: extract(@steps, @indexY);
-
-//     .p_@{indexY}_0 {
-//       @{padding}: @axisY @axisX;
-//     }
-
-//     .forEachY(@indexY - 1);
-//   }
-//   .forEachY(length(@steps));
-
-//   .forEachX(@indexX - 1);
-// }
-
-// .forEachX(length(@steps));
-
-
-// each(@colors, {
-//   .example_module.@{key} {
-//     background: @value;
-//   }
-// });
+});
