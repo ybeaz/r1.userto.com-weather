@@ -9,11 +9,11 @@
 @link https://github.com/jsdelivr/jsdelivr // Link to CDN that works with GitHub.com
 @link https://docs.expo.dev/distribution/publishing-websites/
 
-- In VS Code, `~/Dev/yourails_sep_academy_web/deployment`,
-  - open `/deployment/index-academy.yourails.html`
+- In VS Code, `~/Dev/r1.userto.com-weather/deployment`,
+  - open `/deployment/index-weather.html`
   - !!! change version in links for `bundle.min.js` and `main.bundle.min.js`
 - Building
-  `yarn export:web`: To build. It runs script from package.json file
+  `yarn build`: To build. It runs script from package.json file
 - Copy `~/Dev/yourails_sep_academy_web/web-build/static` into
   `~/Dev/yourails-assets-sep-academy-web/dist/static`
 - In Browser authorise at https://www.npmjs.com/ and check previous `yourails-assets-sep-academy-web` package version
