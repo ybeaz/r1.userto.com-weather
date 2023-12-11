@@ -1,7 +1,11 @@
 import { createSyncActions, CreateSyncAction } from './createActionsSync'
 import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
-const ACTIONS_SYNC: string[] = ['ONCHANGE_INPUT_CITIES', 'SET_CITIES_WEATHER']
+const ACTIONS_SYNC: string[] = [
+  'ONCHANGE_INPUT_CITIES',
+  'SET_CITIES_WEATHER',
+  'TOGGLE_LOADER_OVERLAY',
+]
 
 const ACTION_ASYNC: string[] = ['READ_CITIES_WEATHER']
 

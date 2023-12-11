@@ -21,7 +21,7 @@ function* readCitiesWeather(): Iterable<any> {
   const headers = getHeaders({})
 
   try {
-    // yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const cities = getParsedCitiesString(inputCities)
     if (!cities.length) return
@@ -43,8 +43,9 @@ function* readCitiesWeather(): Iterable<any> {
     )
 
     yield put(actionSync.SET_CITIES_WEATHER(citiesWeatherNext))
+    yield put(actionSync.ONCHANGE_INPUT_CITIES(''))
 
-    // yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('readCitiesWeather [40]', error.name + ': ' + error.message)
   }
