@@ -1,4 +1,4 @@
-interface Iprops {
+type GetDateStringPropsType = {
   timestamp: Date
   dash: boolean
   hours: boolean
@@ -8,15 +8,33 @@ interface Iprops {
   style: string
 }
 
-export const getDateString: Function = ({
-  timestamp = new Date(),
-  dash = false,
-  hours = true,
-  minutes = true,
-  seconds = false,
-  rest = false,
-  style = 'military',
-}: Iprops): string => {
+interface GetDateStringType {
+  (params?: GetDateStringPropsType): string
+}
+
+const getDateStringParamsDefault: GetDateStringPropsType = {
+  timestamp: new Date(),
+  dash: false,
+  hours: true,
+  minutes: true,
+  seconds: false,
+  rest: false,
+  style: 'military',
+}
+
+export const getDateString: GetDateStringType = (
+  paramIn: GetDateStringPropsType = getDateStringParamsDefault
+): string => {
+  const {
+    timestamp,
+    dash,
+    hours,
+    minutes,
+    seconds,
+    rest,
+    style,
+  }: GetDateStringPropsType = { ...getDateStringParamsDefault, ...paramIn }
+
   const plus0 = (num: number) => `0${num.toString()}`.slice(-2)
 
   const d = new Date(timestamp)

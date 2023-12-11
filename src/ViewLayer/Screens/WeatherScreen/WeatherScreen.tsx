@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from '../../../Shared/'
 
 import { rootStoreDefault } from '../../../DataLayer/rootStoreDefault'
 import {
@@ -34,7 +34,8 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   } = props
   const inputCities = store?.forms?.inputCities
   const citiesWeather = store?.citiesWeather
-  const isLoaderOverlayVisible = store.componentsState.isLoaderOverlayVisible
+
+  // const dateCurrent = getDateString()
 
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {
@@ -56,13 +57,6 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
     },
     citiesWeatherListProps: {
       citiesWeather,
-    },
-    loaderBlurhashProps: {
-      isVisibleBlurHash: isLoaderOverlayVisible,
-      textTooltip: '',
-      isTextTooltip: true,
-      delay: 1000,
-      contentComponentName: 'WeatherScreen',
     },
   }
 
