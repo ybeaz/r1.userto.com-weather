@@ -53,16 +53,15 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
 
   return (
     <section className={getClasses('CitiesWeatherList', classAdded)}>
-      {citiesWeather.length ? (
-        <header className='_row _row_header'>
-          <div className='_cell _header_display_name'>City Name</div>
-          <div className='_cell _header_temperature'>Temperature</div>
-          <div className='_cell _header_temperatureUnit'>Unit</div>
-          <div className='_cell _header_temperatureTrend'>Trend</div>
-          <div className='_cell _header_windSpeed'>Wind Speed</div>
-          <div className='_cell _header_windDirection'>Wind Direction</div>
-        </header>
-      ) : null}
+      <header className='_row _row_header'>
+        <div className='_cell _header_display_name'>City Name</div>
+        <div className='_cell _header_temperature'>Temperature</div>
+        <div className='_cell _header_temperatureUnit'>Unit</div>
+        <div className='_cell _header_temperatureTrend'>Trend</div>
+        <div className='_cell _header_windSpeed'>Wind Speed</div>
+        <div className='_cell _header_windDirection'>Wind Direction</div>
+      </header>
+
       {getCitiesWeatherList(citiesWeather)}
     </section>
   )

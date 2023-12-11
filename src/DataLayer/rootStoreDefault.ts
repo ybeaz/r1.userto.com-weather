@@ -50,7 +50,7 @@ const citiesWeatherMock: any = [
 ]
 
 export const rootStoreDefault: RootStoreType = {
-  citiesWeather: citiesWeatherMock, // [],
+  citiesWeather: [],
   forms: {
     inputCities: '',
   },

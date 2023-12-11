@@ -1,18 +1,18 @@
 type GetDateStringPropsType = {
-  timestamp: Date
-  dash: boolean
-  hours: boolean
-  minutes: boolean
-  seconds: boolean
-  rest: boolean
-  style: string
+  timestamp?: Date | number
+  dash?: boolean
+  hours?: boolean
+  minutes?: boolean
+  seconds?: boolean
+  rest?: boolean
+  style?: 'military' | 'EU' | 'US'
 }
 
 interface GetDateStringType {
   (params?: GetDateStringPropsType): string
 }
 
-const getDateStringParamsDefault: GetDateStringPropsType = {
+const getDateStringParamsDefault: Required<GetDateStringPropsType> = {
   timestamp: new Date(),
   dash: false,
   hours: true,
@@ -33,11 +33,14 @@ export const getDateString: GetDateStringType = (
     seconds,
     rest,
     style,
-  }: GetDateStringPropsType = { ...getDateStringParamsDefault, ...paramIn }
+  }: Required<GetDateStringPropsType> = {
+    ...getDateStringParamsDefault,
+    ...paramIn,
+  }
 
   const plus0 = (num: number) => `0${num.toString()}`.slice(-2)
 
-  const d = new Date(timestamp)
+  const d = new Date(+timestamp)
   const separator = dash ? '-' : ' '
   const separator2 = dash ? '-' : ':'
 
@@ -60,7 +63,7 @@ export const getDateString: GetDateStringType = (
     res = `${date}/${month}/${year}${hoursPlus}${minutesPlus}${secondsPlus}${restPlus}`
   else if (style === 'US')
     res = `${month}/${date}/${year}${hoursPlus}${minutesPlus}${secondsPlus}${restPlus}`
-  else
+  else if (style === 'military')
     res = `${year}-${month}-${date}${hoursPlus}${minutesPlus}${secondsPlus}${restPlus}`
 
   return res

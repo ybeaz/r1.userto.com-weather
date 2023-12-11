@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { getClasses } from '../../../Shared/'
-
+import { getDateString } from '../../../Shared/getDateString'
 import { rootStoreDefault } from '../../../DataLayer/rootStoreDefault'
 import {
   Input,
@@ -35,8 +35,6 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   const inputCities = store?.forms?.inputCities
   const citiesWeather = store?.citiesWeather
 
-  // const dateCurrent = getDateString()
-
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {
       classAdded: [],
@@ -58,6 +56,7 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
     citiesWeatherListProps: {
       citiesWeather,
     },
+    currentDate: getDateString({ timestamp: Date.now(), style: 'US' }),
   }
 
   return (
@@ -72,9 +71,12 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
           weather
         </div>
       </div>
-      <div className='_citiesWeatherListWrapper'>
-        <CitiesWeatherList {...propsOut.citiesWeatherListProps} />
-      </div>
+      {citiesWeather.length ? (
+        <div className='_citiesWeatherListWrapper'>
+          <div className='_dateCurrent'>{propsOut.currentDate}</div>
+          <CitiesWeatherList {...propsOut.citiesWeatherListProps} />
+        </div>
+      ) : null}
       <LoaderOverlayYrl {...propsOut.loaderOverlayYrlProps} />
     </div>
   )
