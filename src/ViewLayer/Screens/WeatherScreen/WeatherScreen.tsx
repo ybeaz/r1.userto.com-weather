@@ -3,7 +3,12 @@ import React from 'react'
 import { getClasses } from '../../../Shared/getClasses'
 
 import { rootStoreDefault } from '../../../DataLayer/rootStoreDefault'
-import { Input, Button, CitiesWeatherList } from '../../Components/'
+import {
+  Input,
+  Button,
+  CitiesWeatherList,
+  LoaderOverlayYrl,
+} from '../../Components/'
 import { withPropsYrl, withStoreStateYrl } from '../../Decorators/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
@@ -29,7 +34,7 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   } = props
   const inputCities = store?.forms?.inputCities
   const citiesWeather = store?.citiesWeather
-  // console.info('WeatherScreen [25]', { citiesWeather })
+  const isLoaderOverlayVisible = store.componentsState.isLoaderOverlayVisible
 
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {
@@ -52,6 +57,13 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
     citiesWeatherListProps: {
       citiesWeather,
     },
+    loaderBlurhashProps: {
+      isVisibleBlurHash: isLoaderOverlayVisible,
+      textTooltip: '',
+      isTextTooltip: true,
+      delay: 1000,
+      contentComponentName: 'WeatherScreen',
+    },
   }
 
   return (
@@ -69,6 +81,7 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
       <div className='_citiesWeatherListWrapper'>
         <CitiesWeatherList {...propsOut.citiesWeatherListProps} />
       </div>
+      <LoaderOverlayYrl {...propsOut.loaderOverlayYrlProps} />
     </div>
   )
 }
