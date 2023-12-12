@@ -18,20 +18,20 @@
 ### Project structure
 
 ```
-src                                 # frontend React.js part
+src                                 # Frontend React.js part
 └───@types                          # @types refers to TypeScript type definitions for external libraries. It helps provide type information for the libraries used in the project, enabling better type checking and editor support.
-└───CommunicationLayer              # CommunicationLayer is handling communication with external services or APIs.
+└───CommunicationLayer              # The Communication layer is handling communication with external services or APIs.
 └───Constants                       # The Constants layer is used to define constant values, such as configuration settings, API endpoints, error messages, and other static data that is used across the application.
 └───DataLayer                       # The DataLayer typically handles interactions with the application's data sources, such as making API calls, interacting with databases, and managing the application's data. It helps separate data-related logic from other parts of the application.
 └───FeatureFlags                    # The FeatureFlags layer is used to manage feature flags or feature toggles, which allow certain features of the application to be dynamically enabled or disabled without changing the code.
-└───Interfaces                      # Interfaces layer includes TypeScript or Flow type definitions for data structures and APIs, helping to enforce type safety and provide clear interfaces for the application's data.
+└───Interfaces                      # The Interfaces layer includes TypeScript or Flow type definitions for data structures and APIs, helping to enforce type safety and provide clear interfaces for the application's data.
 └───Navigation                      # The Navigation layer handles routing and navigation within the application, including defining the application's routes and managing the navigation state.
 └───Shared                          # The Shared layer contains shared components, utilities, and other code that is used across different parts of the application.
 └───ViewLayer                       # The ViewLayerincludes the presentation components of the application, such as the UI components, screens, and other elements that are directly visible to the user.
 
 
-nestjs_modules                      # server/ backend Nest.js part
-    └───shared                      # ts functions to use across this module
+nestjs_modules                      # Server/ backend Nest.js part
+    └───shared                      # TS functions to use across this module
     └───types                       # types applied
     │   weather.controller.ts       # Controller is responsible for handling incoming requests, processing them, and returning the appropriate response to the client
     │   weather.module.ts           # Module is used to organize the application into cohesive blocks of functionality.
