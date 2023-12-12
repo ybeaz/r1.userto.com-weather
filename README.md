@@ -32,7 +32,7 @@ src                                 # Frontend React.js part
 
 nestjs_modules                      # Server/ backend Nest.js part
     └───shared                      # TS functions to use across this module
-    └───types                       # types applied
+    └───types                       # Types applied
     │   weather.controller.ts       # Controller is responsible for handling incoming requests, processing them, and returning the appropriate response to the client
     │   weather.module.ts           # Module is used to organize the application into cohesive blocks of functionality.
     │   weather.service.ts          # Services is responsible for encapsulating the application's business logic and data manipulation
