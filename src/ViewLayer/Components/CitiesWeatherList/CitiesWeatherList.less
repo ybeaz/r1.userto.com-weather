@@ -1,7 +1,6 @@
 .CitiesWeatherList {
   flex-direction: column;
   width: 100%;
-  padding: 0 4rem;
 
   display: grid; /* grid containers */
   // grid-gap: 10px;
@@ -21,6 +20,15 @@
       padding: 1rem 0.5rem;
       align-items: center;
       justify-content: center;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+      white-space: pre-wrap;
+    }
+
+    /* Another option for compatibility */
+    .compatibility-long-words {
+      white-space: pre-wrap;
     }
 
     ._header_display_name {
@@ -69,6 +77,10 @@
       border-bottom: 1px solid;
       border-color: lightgrey;
       padding: 0.5rem;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+      white-space: pre-wrap;
     }
 
     ._display_name {
@@ -99,5 +111,15 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    ._row_header {
+      ._cell {
+        font-size: small;
+      }
+    }
+    ._row_weather {
+      ._cell {
+        font-size: small;
+      }
+    }
   }
 }
