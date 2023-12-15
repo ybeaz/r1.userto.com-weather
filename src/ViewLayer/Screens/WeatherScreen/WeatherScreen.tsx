@@ -43,6 +43,11 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
           {},
           { typeEvent: 'ONCHANGE_INPUT_CITIES', data: event.target.value }
         ),
+      handleKeyPress: (event: any) => {
+        if (event.key === 'Enter') {
+          handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' })
+        }
+      },
       value: inputCities,
       placeholder: 'ex.: New York City, San Francisco',
     },
