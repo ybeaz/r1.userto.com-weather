@@ -2,7 +2,11 @@ import React from 'react'
 import { nanoid } from 'nanoid'
 
 import { CityWeatherType } from '../../../Interfaces'
-import { getClasses } from '../../../Shared/getClasses'
+import {
+  getClasses,
+  getCelsiusFromFahrenheit,
+  getMilesFromKm,
+} from '../../../Shared/'
 
 import {
   CitiesWeatherListPropsType,
@@ -30,19 +34,24 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
       const {
         name,
         display_name,
-        temperature,
+        temperature: temperatureFahrenheit,
         temperatureUnit,
         temperatureTrend,
-        windSpeed,
+        windSpeed: windSpeedString,
         windDirection,
       } = cityWeather
+
+      const temperatureCelsius = getCelsiusFromFahrenheit(temperatureFahrenheit)
+
+      const windSpeedMph = windSpeedString.split(' ')[0]
+      const windSpeedKmh = getMilesFromKm(windSpeedMph)
+
       return (
         <div key={key} className='_row _row_weather'>
           <div className='_cell _display_name'>{display_name}</div>
-          <div className='_cell _temperature'>{temperature}</div>
-          <div className='_cell _temperatureUnit'>{temperatureUnit}</div>
+          <div className='_cell _temperature'>{`${temperatureFahrenheit} / ${temperatureCelsius}`}</div>
           <div className='_cell _temperatureTrend'>{temperatureTrend}</div>
-          <div className='_cell _windSpeed'>{windSpeed}</div>
+          <div className='_cell _windSpeed'>{`${windSpeedMph} / ${windSpeedKmh}`}</div>
           <div className='_cell _windDirection'>{windDirection}</div>
         </div>
       )
@@ -55,10 +64,9 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
     <section className={getClasses('CitiesWeatherList', classAdded)}>
       <header className='_row _row_header'>
         <div className='_cell _header_display_name'>City Name</div>
-        <div className='_cell _header_temperature'>Temperature</div>
-        <div className='_cell _header_temperatureUnit'>Unit</div>
+        <div className='_cell _header_temperature'>{`Temperature\n    F / C`}</div>
         <div className='_cell _header_temperatureTrend'>Trend</div>
-        <div className='_cell _header_windSpeed'>Wind Speed</div>
+        <div className='_cell _header_windSpeed'>{`Wind Speed\n mph / kmh`}</div>
         <div className='_cell _header_windDirection'>Wind Direction</div>
       </header>
 

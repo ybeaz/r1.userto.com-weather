@@ -15,12 +15,14 @@ import {
              from '../Components/Input/Input'
  */
 const InputComponent: InputComponentType = (props: InputPropsType) => {
-  const { classAdded, handleOnInput, value, placeholder } = props
+  const { classAdded, handleOnInput, handleKeyPress, value, placeholder } =
+    props
 
   const propsOut: InputPropsOutType = {
     inputProps: {
       className: '_input',
       onInput: (event: any) => handleOnInput(event),
+      onKeyPress: (event: any) => handleKeyPress(event),
       value,
       placeholder,
     },

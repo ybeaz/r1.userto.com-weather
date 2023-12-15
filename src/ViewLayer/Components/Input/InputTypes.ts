@@ -1,6 +1,7 @@
 export type InputPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  handleOnInput: any
+  handleOnInput: (event: any) => void
+  handleKeyPress: (event: any) => void
   value: string
   placeholder: string
 }
