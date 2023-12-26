@@ -37,6 +37,15 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
     storeStateSlice: { inputCities, citiesWeather },
   } = props
 
+  useEffect(() => {
+    handleEvents(
+      {},
+      { typeEvent: 'ONCHANGE_INPUT_CITIES', data: 'San Francisco' }
+    )
+
+    handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' })
+  }, [])
+
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {
       classAdded: [],

@@ -31,8 +31,6 @@ const ModalFramesComponent: ModalFramesComponentType = (
     storeStateSlice: { modalFrames },
   } = props
 
-  console.info('ModalFrames [34]', { modalFrames })
-
   const getChildren: Function = (children: any[]): (ReactElement | null)[] => {
     return children.map(child => {
       const { childName, isActive, childProps } = child

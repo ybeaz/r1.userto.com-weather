@@ -11,8 +11,6 @@ export const SET_MODAL_FRAMES: ReducerType = (
   const { componentsState } = store
   const { modalFrames } = componentsState
 
-  console.info('SET_MODAL_FRAMES [14]', { data })
-
   let modaleFramesNext = modalFrames.map(item => ({ ...item, isActive: false }))
 
   if (data.length > 0) {

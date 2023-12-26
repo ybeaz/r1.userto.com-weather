@@ -1,6 +1,7 @@
 import React from 'react'
 import { nanoid } from 'nanoid'
 
+import { ButtonYrl } from '../../ComponentsLibrary/'
 import { CityWeatherType } from '../../../Interfaces'
 import { getDegreeToCompass } from '../../../Shared/getDegreeToCompass'
 import {
@@ -32,10 +33,10 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
     return citiesWeatherListIn.map((cityWeather: CityWeatherType) => {
       const key = nanoid()
 
-      const { display_name } = cityWeather
+      const { display_name, name } = cityWeather
 
       const {
-        name,
+        name: nameCurrent,
         elev,
         latitude,
         longitude,
@@ -57,6 +58,7 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
       } = cityWeather.currentobservation
 
       const temperatureCelsius = getCelsiusFromFahrenheit(temperatureFahrenheit)
+      const temperatureString = `${temperatureFahrenheit} / ${temperatureCelsius}`
 
       const windSpeedMph = Winds
       const windSpeedKmh = getMilesFromKm(windSpeedMph)
@@ -76,16 +78,16 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
           onClick: (event: any) => () => {},
         },
         buttonLink14Props: {
-          icon: 'MdLightbulbOutline',
+          icon: '',
           captureRight: '14 days',
-          classAdded: 'Button_sideMenuItems',
+          classAdded: 'Button_Link14Props',
           action: {
             typeEvent: 'SET_MODAL_FRAMES',
             data: [
               {
-                childName: 'AboutAcademyBody',
+                childName: 'Weater14DaysBody',
                 isActive: true,
-                childProps: {},
+                childProps: { display_name, name },
               },
             ],
           },
@@ -96,14 +98,16 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
       return (
         <div key={key} className='_row _row_weather'>
           <div className='_cell _display_name'>{display_name}</div>
-          <div className='_cell _temperature'>{`${temperatureFahrenheit} / ${temperatureCelsius}`}</div>
+          <div className='_cell _temperature'>{temperatureString}</div>
           <div className='_cell _windSpeed'>{windSpeedString}</div>
           <div className='_cell _windGust'>{windGustString}</div>
           <div className='_cell _windDirection'>{windDirection}</div>
           <div className='_cell _seaLevelPressure'>{SLP}</div>
           <div className='_cell _relativeHumidity'>{Relh}</div>
           <div className='_cell _dewPoint'>{Dewp}</div>
-          <div className='_cell _dewPoint'>14 days</div>
+          <div className='_cell _link14Props'>
+            <ButtonYrl {...propsOut.buttonLink14Props} />
+          </div>
         </div>
       )
     })
@@ -122,7 +126,7 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
         <div className='_cell _header_seaLevelPressure'>Sea Level Pressure</div>
         <div className='_cell _header_relativeHumidity'>Relative Humidity</div>
         <div className='_cell _header_dewPoint'>Dew Point</div>
-        <div className='_cell _header_dewPoint'>Link</div>
+        <div className='_cell _header_link14Props'>Link</div>
       </header>
 
       {getCitiesWeatherList(citiesWeather)}

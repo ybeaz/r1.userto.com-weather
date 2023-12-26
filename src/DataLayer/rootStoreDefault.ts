@@ -59,8 +59,11 @@ export const rootStoreDefault: RootStoreType = {
     modalFrames: [
       {
         childName: 'Weater14DaysBody',
-        isActive: true,
-        childProps: {},
+        isActive: false,
+        childProps: {
+          display_name: 'San Francisco, California, United States',
+          name: 'San Francisco',
+        },
       },
     ],
   },

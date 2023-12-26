@@ -1,6 +1,148 @@
 .Weater14DaysBody {
   display: flex;
 
+  ._tableList {
+    flex-direction: column;
+    width: 100%;
+
+    display: grid; /* grid containers */
+    // grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr 4fr; /* six columns */
+    grid-auto-flow: row; /* in column direction */
+
+    ._header {
+      display: contents; /* the child elements would be grid items */
+    }
+
+    ._row {
+      display: contents; /* the child elements would be grid items */
+    }
+
+    ._row_header {
+      ._cell {
+        padding: 1rem 0.5rem;
+        align-items: center;
+        justify-content: center;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+        white-space: pre-wrap;
+        // font-weight: 600;
+      }
+
+      /* Another option for compatibility */
+      .compatibility-long-words {
+        white-space: pre-wrap;
+      }
+
+      ._header_startValidTime {
+        border: 1px solid;
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-color: lightgrey;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+
+      ._header_startPeriodName {
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+      ._header_temperature {
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+      ._header_probabilityOfPrecipitations {
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+
+      ._header_descriptionShort {
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+      ._header_iconLink {
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+      ._header_description {
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+    }
+
+    ._row_weather:nth-child(4n -2) > ._cell,
+    ._row_weather:nth-child(4n - 1) > ._cell {
+      background-color: #eef3f5;
+    }
+
+    ._row_weather {
+      ._cellInCell {
+        padding: 0.5rem;
+      }
+
+      ._cell {
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+        white-space: pre-wrap;
+      }
+
+      ._startValidTime {
+        border-left: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+
+      ._startPeriodName {
+        text-align: center;
+      }
+
+      ._temperature {
+        text-align: center;
+      }
+
+      ._probabilityOfPrecipitations {
+        text-align: center;
+      }
+
+      ._descriptionShort {
+        text-align: center;
+      }
+
+      ._iconLink {
+        text-align: center;
+      }
+
+      ._description {
+        text-align: center;
+      }
+    }
+  }
+
   @media @large {
   }
   @media @desktop, @desktop-strict {

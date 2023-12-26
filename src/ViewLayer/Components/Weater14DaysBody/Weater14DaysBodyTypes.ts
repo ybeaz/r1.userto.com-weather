@@ -2,7 +2,9 @@ import React from 'react'
 
 export type Weater14DaysBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  storeStateSlice: any
+  storeStateSlice: { citiesWeather: any }
+  display_name: string
+  name: string
 }
 
 export type Weater14DaysBodyPropsType = Omit<
