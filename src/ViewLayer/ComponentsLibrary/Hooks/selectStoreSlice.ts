@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { createSelector } from 'reselect'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { getObjectSlice } from '../../Shared/getObjectSlice'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { getObjectSlice } from '../../../Shared/getObjectSlice'
 
 export type SelectStoreSliceParamsType = string[]
 

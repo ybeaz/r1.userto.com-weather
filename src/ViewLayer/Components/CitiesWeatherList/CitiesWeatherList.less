@@ -4,7 +4,7 @@
 
   display: grid; /* grid containers */
   // grid-gap: 10px;
-  grid-template-columns: 5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; /* six columns */
+  grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; /* six columns */
   grid-auto-flow: row; /* in column direction */
 
   ._header {
@@ -96,6 +96,13 @@
       border-color: lightgrey;
       text-align: center;
     }
+    ._header_link14Props {
+      border-top: 1px solid;
+      border-right: 1px solid;
+      border-bottom: 1px solid;
+      border-color: lightgrey;
+      text-align: center;
+    }
   }
 
   ._row_weather {
@@ -146,6 +153,10 @@
     ._dewPoint {
       text-align: center;
     }
+
+    ._link14Props {
+      text-align: center;
+    }
   }
 
   @media @large {
@@ -165,5 +176,14 @@
         font-size: small;
       }
     }
+  }
+}
+
+.Button_Link14Props {
+  justify-content: center;
+
+  .__button ._in ._capture_right {
+    color: blue;
+    text-decoration: underline;
   }
 }

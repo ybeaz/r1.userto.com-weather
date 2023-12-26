@@ -56,5 +56,15 @@ export const rootStoreDefault: RootStoreType = {
   },
   componentsState: {
     isLoaderOverlayVisible: false,
+    modalFrames: [
+      {
+        childName: 'Weater14DaysBody',
+        isActive: false,
+        childProps: {
+          display_name: 'San Francisco, California, United States',
+          name: 'San Francisco',
+        },
+      },
+    ],
   },
 }

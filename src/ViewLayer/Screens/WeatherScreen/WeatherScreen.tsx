@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
+import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { getClasses } from '../../../Shared/'
 import { getDateString } from '../../../Shared/getDateString'
 import { rootStoreDefault } from '../../../DataLayer/rootStoreDefault'
@@ -9,7 +10,10 @@ import {
   CitiesWeatherList,
   LoaderOverlayYrl,
 } from '../../Components/'
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../Decorators/'
+import {
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+} from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import {
@@ -32,6 +36,15 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
     handleEvents = () => {},
     storeStateSlice: { inputCities, citiesWeather },
   } = props
+
+  useEffect(() => {
+    handleEvents(
+      {},
+      { typeEvent: 'ONCHANGE_INPUT_CITIES', data: 'San Francisco' }
+    )
+
+    handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' })
+  }, [])
 
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {
@@ -81,6 +94,7 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
         </div>
       ) : null}
       <LoaderOverlayYrl {...propsOut.loaderOverlayYrlProps} />
+      <ModalFrames />
     </div>
   )
 }

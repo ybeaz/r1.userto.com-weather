@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { selectStoreSlice } from './selectStoreSlice'
+import { selectStoreSlice } from '../../ComponentsLibrary/'
 
 export type WithStoreStateSelectedYrlPropsType = FunctionComponent<any>
 
@@ -18,6 +18,8 @@ export interface WithStoreStateSelectedYrlType {
  *    In contrast, an imperative approach involves directly instructing the component to perform a specific action or behavior.
  * @import import { withStoreStateSelectedYrl } from './YrlNativeViewLibrary'
  */
+
+export const mediaParamsDefault: any = {}
 
 export const withStoreStateSelectedYrl: WithStoreStateSelectedYrlType =
   function (arrProps, Component) {
