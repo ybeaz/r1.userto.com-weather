@@ -97,7 +97,7 @@ const Weater14DaysBodyComponent: Weater14DaysBodyComponentType = (
               <div className='_cell _header_temperature'>
                 <span className='_span'>Tempe</span>
                 <span className='_span'>rature</span>
-                <span className='_span'>F / C</span>
+                <span className='_span2'> F / C</span>
               </div>
               <div className='_cell _header_probabilityOfPrecipitations'>
                 Probability of Precipitations, %
