@@ -56,5 +56,12 @@ export const rootStoreDefault: RootStoreType = {
   },
   componentsState: {
     isLoaderOverlayVisible: false,
+    modalFrames: [
+      {
+        childName: 'Weater14DaysBody',
+        isActive: true,
+        childProps: {},
+      },
+    ],
   },
 }

@@ -7,5 +7,6 @@ export type RootStoreType = {
   }
   componentsState: {
     isLoaderOverlayVisible: boolean
+    modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   }
 }

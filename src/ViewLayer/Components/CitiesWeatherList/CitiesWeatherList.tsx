@@ -56,17 +56,6 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
         WindChill,
       } = cityWeather.currentobservation
 
-      /*
-
-
-Gust: Wind Gust
-Altimeter: Altimeter Setting
-
-SLP: Sea Level Pressure
-Relh: Relative Humidity
-Dewp: Dew Point
-*/
-
       const temperatureCelsius = getCelsiusFromFahrenheit(temperatureFahrenheit)
 
       const windSpeedMph = Winds
@@ -81,16 +70,40 @@ Dewp: Dew Point
 
       const windDirection = getDegreeToCompass(Windd)
 
+      const propsOut = {
+        buttonProps: {
+          className: '_inputInit _button',
+          onClick: (event: any) => () => {},
+        },
+        buttonLink14Props: {
+          icon: 'MdLightbulbOutline',
+          captureRight: '14 days',
+          classAdded: 'Button_sideMenuItems',
+          action: {
+            typeEvent: 'SET_MODAL_FRAMES',
+            data: [
+              {
+                childName: 'AboutAcademyBody',
+                isActive: true,
+                childProps: {},
+              },
+            ],
+          },
+          isDisplaying: true,
+        },
+      }
+
       return (
         <div key={key} className='_row _row_weather'>
           <div className='_cell _display_name'>{display_name}</div>
           <div className='_cell _temperature'>{`${temperatureFahrenheit} / ${temperatureCelsius}`}</div>
           <div className='_cell _windSpeed'>{windSpeedString}</div>
-          <div className='_cell _windDirection'>{windDirection}</div>
           <div className='_cell _windGust'>{windGustString}</div>
+          <div className='_cell _windDirection'>{windDirection}</div>
           <div className='_cell _seaLevelPressure'>{SLP}</div>
           <div className='_cell _relativeHumidity'>{Relh}</div>
           <div className='_cell _dewPoint'>{Dewp}</div>
+          <div className='_cell _dewPoint'>14 days</div>
         </div>
       )
     })
@@ -104,11 +117,12 @@ Dewp: Dew Point
         <div className='_cell _header_display_name'>City Name</div>
         <div className='_cell _header_temperature'>{`Temperature\n    F / C`}</div>
         <div className='_cell _header_windSpeed'>{`Wind Speed\n mph / kmh`}</div>
-        <div className='_cell _header_windDirection'>Wind Direction</div>
         <div className='_cell _header_windGust'>{`Wind Gust\n mph / kmh`}</div>
+        <div className='_cell _header_windDirection'>Wind Direction</div>
         <div className='_cell _header_seaLevelPressure'>Sea Level Pressure</div>
         <div className='_cell _header_relativeHumidity'>Relative Humidity</div>
         <div className='_cell _header_dewPoint'>Dew Point</div>
+        <div className='_cell _header_dewPoint'>Link</div>
       </header>
 
       {getCitiesWeatherList(citiesWeather)}
@@ -124,3 +138,4 @@ export type {
   CitiesWeatherListComponentType,
   CitiesWeatherListType,
 }
+;``
