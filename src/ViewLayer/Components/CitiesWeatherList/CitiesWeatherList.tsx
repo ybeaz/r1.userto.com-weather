@@ -119,7 +119,11 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
     <section className={getClasses('CitiesWeatherList', classAdded)}>
       <header className='_row _row_header'>
         <div className='_cell _header_display_name'>City Name</div>
-        <div className='_cell _header_temperature'>{`Temperature\n    F / C`}</div>
+        <div className='_cell _header_temperature'>
+          <span className='_span'>Tempe</span>
+          <span className='_span'>rature</span>
+          <span className='_span'>F / C</span>
+        </div>
         <div className='_cell _header_windSpeed'>{`Wind Speed\n mph / kmh`}</div>
         <div className='_cell _header_windGust'>{`Wind Gust\n mph / kmh`}</div>
         <div className='_cell _header_windDirection'>Wind Direction</div>

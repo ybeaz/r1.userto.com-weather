@@ -94,7 +94,11 @@ const Weater14DaysBodyComponent: Weater14DaysBodyComponentType = (
             <header className='_row _row_header'>
               <div className='_cell _header_startValidTime'>Start Time</div>
               <div className='_cell _header_startPeriodName'>Start Period</div>
-              <div className='_cell _header_temperature'>{`Temperature, F / C`}</div>
+              <div className='_cell _header_temperature'>
+                <span className='_span'>Tempe</span>
+                <span className='_span'>rature</span>
+                <span className='_span'>F / C</span>
+              </div>
               <div className='_cell _header_probabilityOfPrecipitations'>
                 Probability of Precipitations, %
               </div>

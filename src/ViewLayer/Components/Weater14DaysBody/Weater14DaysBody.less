@@ -150,5 +150,28 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    ._tableList {
+      grid-template-columns: 1fr 1fr 2fr; /* six columns */
+
+      ._row_header {
+        ._cell {
+          font-size: small;
+          ._span {
+            display: flex;
+            flex-direction: column;
+            font-size: small;
+          }
+        }
+      }
+
+      ._header_startValidTime,
+      ._header_description,
+      ._header_probabilityOfPrecipitations,
+      ._startValidTime,
+      ._probabilityOfPrecipitations,
+      ._description {
+        display: none;
+      }
+    }
   }
 }
