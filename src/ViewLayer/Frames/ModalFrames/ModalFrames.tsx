@@ -2,7 +2,7 @@ import React, { ReactElement, FunctionComponent } from 'react'
 
 import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { Weater14DaysBody } from '../../Components/'
+import { WeaterNDaysBody } from '../../Components/'
 
 import {
   ModalFramesComponentPropsType,
@@ -13,7 +13,7 @@ import {
 } from './ModalFramesTypes'
 
 const CHILDREN: Record<string, FunctionComponent<any>> = {
-  Weater14DaysBody,
+  WeaterNDaysBody,
   //AuthUser, Not used in favor of Cognito authetication
   // SkillExchangeIntro2,
   // SkillExchangeIntro,

@@ -79,13 +79,13 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
         },
         buttonLink14Props: {
           icon: '',
-          captureRight: '14 days',
+          captureRight: '7 days',
           classAdded: 'Button_Link14Props',
           action: {
             typeEvent: 'SET_MODAL_FRAMES',
             data: [
               {
-                childName: 'Weater14DaysBody',
+                childName: 'WeaterNDaysBody',
                 isActive: true,
                 childProps: { display_name, name },
               },
