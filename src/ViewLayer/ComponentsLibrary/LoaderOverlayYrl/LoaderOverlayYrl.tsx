@@ -1,16 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
 
 import {
+  LoaderOverlayYrlComponentPropsType,
   LoaderOverlayYrlPropsType,
   LoaderOverlayYrlPropsOutType,
   LoaderOverlayYrlComponentType,
   LoaderOverlayYrlType,
 } from './LoaderOverlayYrlTypes'
+
+const propsDefault = {
+  classMain: 'LoaderOverlay3Yrl',
+}
 
 /**
  * @description Component to render LoaderOverlayYrl
@@ -18,25 +21,29 @@ import {
              from '../ComponentsLibrary/'
  */
 const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
-  props: LoaderOverlayYrlPropsType
+  propsIn: LoaderOverlayYrlComponentPropsType
 ) => {
+  const props = { ...propsDefault, ...propsIn }
+
   const {
+    classMain,
     storeStateSlice: { isLoaderOverlayVisible },
   } = props
 
-  const classAdd = isLoaderOverlayVisible ? 'LoaderOverlayYrl_show' : ''
+  const classAdd = isLoaderOverlayVisible ? `${classMain}_show` : ''
 
   const propsOut: LoaderOverlayYrlPropsOutType = {}
 
   return (
-    <div className={getClasses(`LoaderOverlayYrl`, classAdd)}>
+    <div className={getClasses(classMain, classAdd)}>
       <div className={`_spinner`}></div>
     </div>
   )
 }
 
+const storeStateSliceProps: string[] = ['isLoaderOverlayVisible']
 export const LoaderOverlayYrl: LoaderOverlayYrlType = withStoreStateSelectedYrl(
-  ['isLoaderOverlayVisible'],
+  storeStateSliceProps,
   React.memo(LoaderOverlayYrlComponent)
 )
 
