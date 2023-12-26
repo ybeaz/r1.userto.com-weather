@@ -32,7 +32,7 @@ function* readCitiesWeather(): Iterable<any> {
       baseURL,
       headers
     )({
-      url: '/weather',
+      url: '/weather-map-click',
       data: payload,
       method: MethodHttpEnumType['post'],
     })
