@@ -1,7 +1,6 @@
 /**
  * @description Function to check if entity can be parsed as a number
- * @param value
- * @returns
+ * @import import { isParsableFloat } from '../Shared/isParsableFloat'
  */
 export const isParsableFloat: Function = (value: any): boolean => {
   try {

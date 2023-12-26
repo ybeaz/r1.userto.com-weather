@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { withStoreStateSelectedYrl } from '../../Decorators/'
 import { getClasses } from '../../../Shared/getClasses'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
@@ -20,8 +21,8 @@ const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
   props: LoaderOverlayYrlPropsType
 ) => {
   const {
-    componentsState: { isLoaderOverlayVisible },
-  } = useSelector((store2: RootStoreType) => store2)
+    storeStateSlice: { isLoaderOverlayVisible },
+  } = props
 
   const classAdd = isLoaderOverlayVisible ? 'LoaderOverlayYrl_show' : ''
 
@@ -34,8 +35,9 @@ const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
   )
 }
 
-export const LoaderOverlayYrl: LoaderOverlayYrlType = React.memo(
-  LoaderOverlayYrlComponent
+export const LoaderOverlayYrl: LoaderOverlayYrlType = withStoreStateSelectedYrl(
+  ['isLoaderOverlayVisible'],
+  React.memo(LoaderOverlayYrlComponent)
 )
 
 export type {

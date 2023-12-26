@@ -11,5 +11,5 @@ export interface ServersType {
 export const SERVERS_MAIN: ServersType = {
   remote: 'https://yourails.com',
   local: 'http://127.0.0.1:3000',
-  timeout: 5000,
+  timeout: 15000,
 }

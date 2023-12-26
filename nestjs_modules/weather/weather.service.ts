@@ -94,8 +94,13 @@ export class WeatherService implements WeatherServiceType {
 
       const res = await axios.request(config)
 
-      const { temperature, temperatureUnit, temperatureTrend, windSpeed, windDirection } =
-        res.data?.properties?.periods[0]
+      const {
+        temperature,
+        temperatureUnit,
+        temperatureTrend,
+        windSpeed,
+        windDirection,
+      } = res.data?.properties?.periods[0]
 
       data = {
         name,
@@ -134,7 +139,7 @@ export class WeatherService implements WeatherServiceType {
   }
 
   getFlattenArray(arr: any[]) {
-    let data = []
+    let data: any = []
     arr.forEach((items: any[]) => {
       items.forEach((item: any) => {
         data.push(item)

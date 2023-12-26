@@ -9,7 +9,7 @@ import {
   CitiesWeatherList,
   LoaderOverlayYrl,
 } from '../../Components/'
-import { withPropsYrl, withStoreStateYrl } from '../../Decorators/'
+import { withPropsYrl, withStoreStateSelectedYrl } from '../../Decorators/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import {
@@ -30,10 +30,8 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   const {
     classAdded,
     handleEvents = () => {},
-    store = rootStoreDefault,
+    storeStateSlice: { inputCities, citiesWeather },
   } = props
-  const inputCities = store?.forms?.inputCities
-  const citiesWeather = store?.citiesWeather
 
   const propsOut: WeatherScreenPropsOutType = {
     inputProps: {
@@ -61,7 +59,7 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
     citiesWeatherListProps: {
       citiesWeather,
     },
-    currentDate: getDateString({ timestamp: Date.now(), style: 'US' }),
+    currentDate: citiesWeather[0] && citiesWeather[0]?.currentobservation?.Date, // getDateString({ timestamp: Date.now(), style: 'US' }),
   }
 
   return (
@@ -87,7 +85,8 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   )
 }
 
-export const WeatherScreen = withStoreStateYrl(
+export const WeatherScreen = withStoreStateSelectedYrl(
+  ['inputCities', 'citiesWeather'],
   withPropsYrl({ handleEvents: handleEventsIn })(
     React.memo(WeatherScreenComponent)
   )
