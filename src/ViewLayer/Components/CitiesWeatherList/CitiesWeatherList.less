@@ -45,6 +45,11 @@
       border-bottom: 1px solid;
       border-color: lightgrey;
       text-align: center;
+
+      ._span2 {
+        display: flex;
+        flex-direction: column;
+      }
     }
     ._header_temperatureUnit {
       border-top: 1px solid;
@@ -166,9 +171,28 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
+
+    ._header_windGust,
+    ._header_seaLevelPressure,
+    ._header_relativeHumidity,
+    ._header_dewPoint,
+    ._windGust,
+    ._seaLevelPressure,
+    ._relativeHumidity,
+    ._dewPoint {
+      display: none;
+    }
+
     ._row_header {
       ._cell {
         font-size: small;
+        ._span2,
+        ._span {
+          display: flex;
+          flex-direction: column;
+          font-size: small;
+        }
       }
     }
     ._row_weather {
@@ -185,5 +209,6 @@
   .__button ._in ._capture_right {
     color: blue;
     text-decoration: underline;
+    font-size: small;
   }
 }

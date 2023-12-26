@@ -8,20 +8,20 @@ import {
   getCelsiusFromFahrenheit,
 } from '../../../Shared/'
 import {
-  Weater14DaysBodyComponentPropsType,
-  Weater14DaysBodyPropsType,
-  Weater14DaysBodyPropsOutType,
-  Weater14DaysBodyComponentType,
-  Weater14DaysBodyType,
-} from './Weater14DaysBodyTypes'
+  WeaterNDaysBodyComponentPropsType,
+  WeaterNDaysBodyPropsType,
+  WeaterNDaysBodyPropsOutType,
+  WeaterNDaysBodyComponentType,
+  WeaterNDaysBodyType,
+} from './WeaterNDaysBodyTypes'
 
 /**
- * @description Component to render Weater14DaysBody
- * @import import { Weater14DaysBody, Weater14DaysBodyPropsType, Weater14DaysBodyPropsOutType, Weater14DaysBodyType } 
-             from '../Components/Weater14DaysBody/Weater14DaysBody'
+ * @description Component to render WeaterNDaysBody
+ * @import import { WeaterNDaysBody, WeaterNDaysBodyPropsType, WeaterNDaysBodyPropsOutType, WeaterNDaysBodyType } 
+             from '../Components/WeaterNDaysBody/WeaterNDaysBody'
  */
-const Weater14DaysBodyComponent: Weater14DaysBodyComponentType = (
-  props: Weater14DaysBodyComponentPropsType
+const WeaterNDaysBodyComponent: WeaterNDaysBodyComponentType = (
+  props: WeaterNDaysBodyComponentPropsType
 ) => {
   const {
     classAdded,
@@ -84,21 +84,25 @@ const Weater14DaysBodyComponent: Weater14DaysBodyComponentType = (
       })
   }
 
-  const propsOut: Weater14DaysBodyPropsOutType = {}
+  const propsOut: WeaterNDaysBodyPropsOutType = {}
 
   return (
     <>
       {cityWeather?.time?.startValidTime?.length ? (
-        <div className={getClasses('Weater14DaysBody', classAdded)}>
+        <div className={getClasses('WeaterNDaysBody', classAdded)}>
           <section className={getClasses('_tableList', classAdded)}>
             <header className='_row _row_header'>
               <div className='_cell _header_startValidTime'>Start Time</div>
               <div className='_cell _header_startPeriodName'>Start Period</div>
-              <div className='_cell _header_temperature'>{`Temperature, F / C`}</div>
+              <div className='_cell _header_temperature'>
+                <span className='_span'>Tempe</span>
+                <span className='_span'>rature</span>
+                <span className='_span2'> F / C</span>
+              </div>
               <div className='_cell _header_probabilityOfPrecipitations'>
                 Probability of Precipitations, %
               </div>
-              <div className='_cell _header_descriptionShort'>Short</div>
+              <div className='_cell _header_descriptionShort'>Brief</div>
               <div className='_cell _header_description'>Description</div>
               {/* <div className='_cell _header_iconLink'>Icon</div> */}
             </header>
@@ -112,14 +116,14 @@ const Weater14DaysBodyComponent: Weater14DaysBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['citiesWeather']
-export const Weater14DaysBody = withStoreStateSelectedYrl(
+export const WeaterNDaysBody = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(Weater14DaysBodyComponent)
+  React.memo(WeaterNDaysBodyComponent)
 )
 
 export type {
-  Weater14DaysBodyPropsType,
-  Weater14DaysBodyPropsOutType,
-  Weater14DaysBodyComponentType,
-  Weater14DaysBodyType,
+  WeaterNDaysBodyPropsType,
+  WeaterNDaysBodyPropsOutType,
+  WeaterNDaysBodyComponentType,
+  WeaterNDaysBodyType,
 }
