@@ -1,5 +1,4 @@
-import { consoler } from './consoler'
-import { consolerError } from './consolerError'
+import { isParsableFloat } from './isParsableFloat'
 
 export type GetMilesFromKmParamsType = number | string
 
@@ -9,7 +8,7 @@ export type GetMilesFromKmOptionsType = {
   decimals?: number
 }
 
-export type GetMilesFromKmResType = number
+export type GetMilesFromKmResType = string
 
 interface GetMilesFromKmType {
   (
@@ -40,15 +39,16 @@ export const getMilesFromKm: GetMilesFromKmType = (
 
   const { printRes, parentFunction, decimals = 0 } = options
 
-  const numberMilesNext =
-    typeof numberMiles === 'string' ? parseInt(numberMiles, 10) : numberMiles
-
-  let output: number = 0
+  let output: string = String(numberMiles)
 
   try {
-    output = numberMilesNext * 1.609
+    if (typeof numberMiles === 'string' && isParsableFloat(numberMiles)) {
+      let numberMilesNext: number = parseInt(numberMiles, 10)
 
-    output = +output.toFixed(decimals)
+      numberMilesNext = numberMilesNext * 1.609
+
+      output = String(+numberMilesNext.toFixed(decimals))
+    }
 
     if (printRes) {
       console.log('getMilesFromKm [43]', { output })

@@ -3,7 +3,10 @@ import { HandleEventType, RootStoreType } from '../../../Interfaces/'
 export type WeatherScreenPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   handleEvents?: HandleEventType
-  store?: RootStoreType
+  storeStateSlice: {
+    inputCities: any
+    citiesWeather: any
+  }
 }
 
 export type WeatherScreenPropsOutType = Record<string, any>

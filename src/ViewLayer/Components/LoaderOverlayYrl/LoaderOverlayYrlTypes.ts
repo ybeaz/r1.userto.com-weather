@@ -1,4 +1,6 @@
-export type LoaderOverlayYrlPropsType = any
+export type LoaderOverlayYrlPropsType = {
+  storeStateSlice: { isLoaderOverlayVisible: any }
+}
 
 export type LoaderOverlayYrlPropsOutType = Record<string, any>
 
