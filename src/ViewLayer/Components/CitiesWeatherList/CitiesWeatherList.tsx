@@ -42,7 +42,7 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
         longitude,
         Date,
         Temp: temperatureFahrenheit,
-        Dewp,
+        Dewp: dewpFahrenheit,
         Relh,
         Winds,
         Windd,
@@ -71,6 +71,9 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
         Gust === 'NA' ? 'NA' : `${windGustMph} / ${windGustKmh}`
 
       const windDirection = getDegreeToCompass(Windd)
+
+      const dewpCelsius = getCelsiusFromFahrenheit(dewpFahrenheit)
+      const dewpString = `${dewpFahrenheit} / ${dewpCelsius}`
 
       const propsOut = {
         buttonProps: {
@@ -104,7 +107,7 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
           <div className='_cell _windDirection'>{windDirection}</div>
           <div className='_cell _seaLevelPressure'>{SLP}</div>
           <div className='_cell _relativeHumidity'>{Relh}</div>
-          <div className='_cell _dewPoint'>{Dewp}</div>
+          <div className='_cell _dewPoint'>{dewpString}</div>
           <div className='_cell _link14Props'>
             <ButtonYrl {...propsOut.buttonLink14Props} />
           </div>
@@ -128,8 +131,14 @@ const CitiesWeatherListComponent: CitiesWeatherListComponentType = (
         <div className='_cell _header_windGust'>{`Wind Gust\n mph / kmh`}</div>
         <div className='_cell _header_windDirection'>Wind Direction</div>
         <div className='_cell _header_seaLevelPressure'>Sea Level Pressure</div>
-        <div className='_cell _header_relativeHumidity'>Relative Humidity</div>
-        <div className='_cell _header_dewPoint'>Dew Point</div>
+        <div className='_cell _header_relativeHumidity'>
+          Relative Humidity %
+        </div>
+        <div className='_cell _header_dewPoint'>
+          <span className='_span'>Dew</span>
+          <span className='_span'> Point</span>
+          <span className='_span2'> F / C</span>
+        </div>
         <div className='_cell _header_link14Props'>Link</div>
       </header>
 
