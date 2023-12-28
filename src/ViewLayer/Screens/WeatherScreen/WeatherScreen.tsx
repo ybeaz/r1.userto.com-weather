@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { getClasses } from '../../../Shared/'
-import { getDateString } from '../../../Shared/getDateString'
-import { rootStoreDefault } from '../../../DataLayer/rootStoreDefault'
 import {
   Input,
   Button,
@@ -40,10 +38,19 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   useEffect(() => {
     handleEvents(
       {},
-      { typeEvent: 'ONCHANGE_INPUT_CITIES', data: 'San Francisco' }
+      { typeEvent: 'ONCHANGE_INPUT_CITIES', data: 'San Francisco, San Diego' }
     )
 
-    handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' })
+    handleEvents(
+      {},
+      {
+        typeEvent: 'CLICK_ON_SUBMIT',
+        data: {
+          filterPropName: 'display_name',
+          filterValue: 'San Diego, Duval County, Texas, United States',
+        },
+      }
+    )
   }, [])
 
   const propsOut: WeatherScreenPropsOutType = {

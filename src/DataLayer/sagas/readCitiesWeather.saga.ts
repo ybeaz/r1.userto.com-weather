@@ -10,7 +10,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { axiosClient } from '../../CommunicationLayer/clients/axiosClient'
 import { getParsedCitiesString } from '../../Shared/getParsedCitiesString'
 
-function* readCitiesWeather(): Iterable<any> {
+function* readCitiesWeather(data: any): Iterable<any> {
   const store: any = yield select((store: RootStoreType) => store)
   const {
     forms: { inputCities },
@@ -38,9 +38,17 @@ function* readCitiesWeather(): Iterable<any> {
     })
     const citiesWeather = res?.data?.data || []
 
-    const citiesWeatherNext = citiesWeather.filter(
+    let citiesWeatherNext = citiesWeather.filter(
       (item: any) => item.display_name
     )
+
+    /* Castom filter for the case of initial loading,  see line 46 of src/ViewLayer/Screens/WeatherScreen/WeatherScreen.tsx */
+    if (data?.data?.filterPropName && data?.data?.filterValue) {
+      citiesWeatherNext = citiesWeather.filter(
+        (item: any) =>
+          item[data?.data?.filterPropName] !== data?.data?.filterValue
+      )
+    }
 
     yield put(actionSync.SET_CITIES_WEATHER(citiesWeatherNext))
     yield put(actionSync.ONCHANGE_INPUT_CITIES(''))
