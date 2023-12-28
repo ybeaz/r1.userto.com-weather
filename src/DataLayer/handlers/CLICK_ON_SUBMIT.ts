@@ -1,6 +1,6 @@
 import { store } from '../store'
 import { ActionEventType } from '../../Interfaces/ActionEventType'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { actionAsync } from '../../DataLayer/index.action'
 
 const { dispatch } = store
 

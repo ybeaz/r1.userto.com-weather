@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { getClasses } from '../../../Shared/'
-import { getDateString } from '../../../Shared/getDateString'
-import { rootStoreDefault } from '../../../DataLayer/rootStoreDefault'
 import {
   Input,
   Button,

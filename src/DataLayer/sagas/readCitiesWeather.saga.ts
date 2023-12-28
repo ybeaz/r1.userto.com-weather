@@ -42,7 +42,7 @@ function* readCitiesWeather(data: any): Iterable<any> {
       (item: any) => item.display_name
     )
 
-    /* Castom filter for the case of initial loading, see line 46 of src/ViewLayer/Screens/WeatherScreen/WeatherScreen.tsx */
+    /* Castom filter for the case of initial loading,  see line 46 of src/ViewLayer/Screens/WeatherScreen/WeatherScreen.tsx */
     if (data?.data?.filterPropName && data?.data?.filterValue) {
       citiesWeatherNext = citiesWeather.filter(
         (item: any) =>
