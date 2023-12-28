@@ -40,10 +40,19 @@ const WeatherScreenComponent: WeatherScreenComponentType = (
   useEffect(() => {
     handleEvents(
       {},
-      { typeEvent: 'ONCHANGE_INPUT_CITIES', data: 'San Francisco' }
+      { typeEvent: 'ONCHANGE_INPUT_CITIES', data: 'San Francisco, San Diego' }
     )
 
-    handleEvents({}, { typeEvent: 'CLICK_ON_SUBMIT' })
+    handleEvents(
+      {},
+      {
+        typeEvent: 'CLICK_ON_SUBMIT',
+        data: {
+          filterPropName: 'display_name',
+          filterValue: 'San Diego, Duval County, Texas, United States',
+        },
+      }
+    )
   }, [])
 
   const propsOut: WeatherScreenPropsOutType = {

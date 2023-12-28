@@ -5,4 +5,4 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 const { dispatch } = store
 
 export const CLICK_ON_SUBMIT: ActionEventType = (event, data) =>
-  dispatch(actionAsync.READ_CITIES_WEATHER.REQUEST())
+  dispatch(actionAsync.READ_CITIES_WEATHER.REQUEST(data))
